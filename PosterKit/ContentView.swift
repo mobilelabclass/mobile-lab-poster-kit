@@ -87,15 +87,16 @@ struct ContentView: View {
                             self.squareAnimation.toggle()
                         }
                     
-                    // Custom path drawing.
+                    // Custom path drawing for equilateral triangle.
                     Path { path in
                         path.move(to: CGPoint(x: 46.2, y: 0))
                         path.addLine(to: CGPoint(x: 92.4, y: 80))
                         path.addLine(to: CGPoint(x: 0, y: 80))
                     }
+                    .offset(x: 0, y: -12.4)
                     .fill(Color.blue)
-                    .frame(width: 92.4, height: 92.4)
-                    .offset(x: 0, y:  triangleAnimation ? -300 : 6.2)
+                    .frame(width: 92.4, height: 80)
+                    .offset(x: 0, y:  triangleAnimation ? -300 : 12.4)
                     .animation(Animation.easeInOut(duration: 1.0))
                     .onTapGesture {
                         self.triangleAnimation.toggle()
