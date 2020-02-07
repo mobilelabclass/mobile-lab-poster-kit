@@ -20,6 +20,28 @@ struct ContentView: View {
             // Background color.
             Color(red: 0, green: 0, blue: 0)
             
+            // Moon and Earth images.
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Image("moon")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .opacity(moonAnimation ? 0.2 : 1.0)
+                        .animation(Animation.easeInOut(duration: 1.0))
+                        .aspectRatio(contentMode: .fit)
+                        .onTapGesture {
+                            self.moonAnimation.toggle()
+                    }
+                }
+                .padding(.trailing, 40)
+                
+                Image("earth-night")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
             // Title and subtitle.
             VStack {
                 VStack(alignment: .leading) {
@@ -41,33 +63,10 @@ struct ContentView: View {
             .padding(.horizontal, 30)
             .padding(.top, 50)
             
-            // Moon and Earth images.
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Image("moon")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .opacity(moonAnimation ? 0.2 : 1.0)
-                        .animation(Animation.easeInOut(duration: 1.0))
-                        .aspectRatio(contentMode: .fit)
-                        .onTapGesture {
-                            self.moonAnimation.toggle()
-                    }
-                    
-                }
-                .padding(.trailing, 40)
-                
-                Image("earth-night")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-            
             // Shapes.
             VStack {
                 Spacer()
-
+                
                 HStack(spacing: 20) {
                     Circle()
                         .fill(Color.red)
@@ -76,7 +75,7 @@ struct ContentView: View {
                         .animation(Animation.easeInOut(duration: 1.0))
                         .onTapGesture {
                             self.circleAnimation.toggle()
-                        }
+                    }
                     
                     Rectangle()
                         .fill(Color.green)
@@ -85,7 +84,7 @@ struct ContentView: View {
                         .animation(Animation.easeInOut(duration: 1.0))
                         .onTapGesture {
                             self.squareAnimation.toggle()
-                        }
+                    }
                     
                     // Custom path drawing for equilateral triangle.
                     Path { path in
@@ -104,10 +103,10 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 80)
             }
-
+            
         }
         .edgesIgnoringSafeArea(.all)
-
+        
     }
 }
 
